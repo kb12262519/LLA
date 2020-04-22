@@ -1,4 +1,4 @@
-#Fri Mar 06 13:26:39 KST 2020
-base.0=C\:\\Users\\just_\\AndroidStudioProjects\\LLA\\app\\build\\intermediates\\dex\\debug\\out\\classes.dex
+#Tue Apr 21 08:21:12 KST 2020
+base.0=C\:\\Users\\by\\AndroidStudioProjects\\LLA\\app\\build\\intermediates\\dex\\debug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

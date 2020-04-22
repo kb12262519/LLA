@@ -4,14 +4,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.lla.MainActivity;
 import com.example.lla.R;
 
+import java.util.Objects;
+/**
+ * 어떤 메뉴(프래그먼트)를 선택하여 띄워 줄 건지 선택
+ * */
 public class MainMenuFragment extends Fragment implements View.OnClickListener {
     public MainMenuFragment() {
 
@@ -36,18 +40,18 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.random:
-                LLA.presentFragment = Const.Fragment.Random;
+                LLA.setPresentFragment(List.Fragment.Random);
                 break;
             case R.id.select:
-                LLA.presentFragment = Const.Fragment.Select;
+                LLA.setPresentFragment(List.Fragment.Select);
                 break;
             case R.id.option:
-                LLA.presentFragment = Const.Fragment.Option;
+                LLA.setPresentFragment(List.Fragment.Option);
                 break;
             case R.id.quit:
-                Toast.makeText(getContext(), "?", Toast.LENGTH_SHORT).show();
-//                android.os.Process.killProcess(android.os.Process.myPid());
+                android.os.Process.killProcess(android.os.Process.myPid());
                 break;
         }
+        LLA.refreshFragment();
     }
 }

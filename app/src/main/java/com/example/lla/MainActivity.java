@@ -1,40 +1,44 @@
 package com.example.lla;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
 
-import com.example.lla.common.Const;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.lla.common.Common;
 import com.example.lla.common.LLA;
-import com.example.lla.common.MainMenuFragment;
-import com.example.lla.option.OptionFragment;
-import com.example.lla.random.RandomFragment;
-import com.example.lla.select.SelectFragment;
+import com.example.lla.common.List;
 
+/**
+ * 메인엑티비티로써 변수를 유지한다.
+ * */
 public class MainActivity extends AppCompatActivity {
-
+    private int ExceptionCount = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LLA.presentFragment = LLA.presentFragment==null? Const.Fragment.Main : LLA.presentFragment;
+        LLA.setPresentActivity(this);
+        LLA.setPresentFragment(List.Fragment.Main);
 
-        changeFragment();
+        refreshFragment();
     }
 
-    public void changeFragment(){
-        Fragment f = new MainMenuFragment();
-        if(LLA.presentFragment == Const.Fragment.Random) f = new RandomFragment();
-        else if(LLA.presentFragment == Const.Fragment.Select) f = new SelectFragment();
-        else if(LLA.presentFragment == Const.Fragment.Option) f = new OptionFragment();
+    public void refreshFragment() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment, LLA.createPresentFragment()).commit();
+        ExceptionCount = 0;
+    }
+    public void refreshFragmentWithException() {
+        if(ExceptionCount > 5){
+            finish();
+        }
+        ExceptionCount++;
+        getSupportFragmentManager().beginTransaction().replace(R.id.mainFragment, LLA.createPresentFragment()).commit();
+    }
 
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.add(R.id.mainFragment, f);
-        fragmentTransaction.commit();
+    @Override
+    public void onBackPressed() {
+        Common.finishIn2SecondsOfMain(System.currentTimeMillis(), this);
+        refreshFragment();
     }
 }
