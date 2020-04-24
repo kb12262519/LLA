@@ -1,5 +1,5 @@
 <games>
-    <game name="LiarGame">
+    <game name="LiarGame" fragment="liarGame">
 1.한 사람을 정하여 첫번째 플레이어로 선정한다.
 (보통은 전판의 라이어)
 2.순서대로 돌아가며 주제어를 보고 연관되는 힌트를 제시한다.
@@ -10,7 +10,7 @@
 * 만장일치로 라이어를 지목하면 라이어를 제외한 나머지 플레이어의 승리
 * 라이어가 정답을 맞추면 라이어를 제외한 전원의 패배.
     </game>
-    <game name="UpAndDown">
+    <game name="UpAndDown" fragment="upAndDown">
 숫자 맞추면 이김
     </game>
 

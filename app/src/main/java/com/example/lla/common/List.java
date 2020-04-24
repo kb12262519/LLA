@@ -6,4 +6,7 @@ public class List {
 
     /*게임 목록*/
     public enum Game {LiarGame, UpAndDown}
+
+    /*게임을 표시할 프레그먼트의 종류*/
+    public enum gameFragment {LiarGame, UpAndDown ,Else}
 }

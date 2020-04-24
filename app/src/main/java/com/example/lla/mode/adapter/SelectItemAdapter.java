@@ -4,17 +4,20 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lla.R;
+import com.example.lla.common.Common;
+import com.example.lla.common.LLA;
 import com.example.lla.mode.model.SelectItem;
 import com.example.lla.mode.holder.SelectItemHolder;
 
 import java.util.ArrayList;
 
-public class SelectItemAdapter extends RecyclerView.Adapter<SelectItemHolder> {
+public class SelectItemAdapter extends RecyclerView.Adapter<SelectItemHolder>  {
 
     private ArrayList<SelectItem> selectItemList;
 
@@ -36,10 +39,12 @@ public class SelectItemAdapter extends RecyclerView.Adapter<SelectItemHolder> {
         SelectItem item = selectItemList.get(position);
         holder.getTitle().setText(item.getTitle());
         holder.getDescription().setText(item.getDescription());
+        holder.setGameFragment(item.getFragmentType());
     }
 
     @Override
     public int getItemCount() {
         return selectItemList.size();
     }
+
 }
